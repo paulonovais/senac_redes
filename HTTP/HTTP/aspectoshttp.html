@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Aspectos básicos do HTTP </title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+    <header>
+        <nav id="main-nav" class="navbar navbar-expand-lg navbar-light ">
+            <a class="h1 text-bold logo" target="_self">HTTP</a>
+            <div id="dashboard-main-navbar" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="index.html" target="_self">Início</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="aspectoshttp.html" target="_self">Aspectos básicos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fluxohttp.html" target="_self">Fluxo HTTP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fluxohttp.html" target="_self">APIs HTTP</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="titlebar-container">
+            <div class="titlebar">
+                <h1 class="title">Uma visão geral do HTTP</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <br>
+        <br>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <section>
+                        <p class="h3">
+                            Aspectos de requisição HTTP.
+                        </p>
+                        <br>
+                        <h4>HTTP é simples</h4>
+                        <p class="text-justify">
+                            Mesmo com mais complexidade introduzida no HTTP/2.0 por encapsular mensagens HTTP em quadros (frames), o HTTP foi projetado para ser simples e legível às pessoas. As mensagens HTTP podem ser lidas e entendidas por qualquer um, provendo uma maior facilidade
+                            para desenvolvimento e testes, e reduzir a complexidade para os estudantes.
+                        </p>
+                        <br>
+                        <h4>HTTP não tem estado, mas tem sessões</h4>
+                        <p class="text-justify">
+                            HTTP é sem estado: não existe uma relação entre duas requisições sendo feitas através da mesma conexão. Isso traz um problema imediato para usuários que interagem com algumas páginas de forma coerente, por exemplo, usando um carrinho de compras de e-commerces*.
+                            Mas como o fundamento básico do HTTP é não manter estados, cookies HTTP permitem que as sessões tenham estados. Usando a extensibilidade dos cabeçalhos, os cookies são adicionados ao fluxo do HTTP, permitindo que a criação
+                            de sessão em cada requisição HTTP compartilhem o mesmo contexto, ou o mesmo estado.
+                        </p>
+                        <div class="importante">
+                            <p class="text-justify">
+                                * O problema do carrinho de compras de e-commerces e o protocolo HTTP: como o protocolo HTTP não guarda o estado das requisições e respostas, é impossível fazer com que um site guarde as informações de um carrinho de compras somente através do HTTP. Por
+                                exemplo, imagine que você irá comprar um computador novo e um jogo de xícaras de chá. Para que esses dados possam ser mantidos enquanto você navega no site do e-commerce olhando mais produtos (cada página visitada gera
+                                um novo par de requisição/resposta), duas estratégias podem ser usadas, já que o HTTP por si só, não permitiria isso: Você possui um cadastro no e-commerce e um programa escrito no servidor é responsável por armazenar suas
+                                informações do carrinho; ou Um programa escrito em linguagem cliente (como JavaScript), gerencia essas informações através dos cookies e de bancos de dados que os próprios navegadores disponibilizam para as aplicações,
+                                para armazenamento temporário dessas informações de carrinho.
+                            </p>
+                        </div>
+                        <h4>HTTP e conexões</h4>
+                        <p class="text-justify">
+                            Uma conexão é controlada na camada de transporte, e portanto fundamentalmente fora do controle do HTTP. Entretanto o HTTP não requer que o protocolo de transporte utilizado seja baseado em conexões, só requer que seja confiável ou não perca mensagens
+                            (sem pelo menos apresentar erros). Dentre os dois protocolos de transporte mais comuns na internet, o TCP é confiável e o UDP não. Portanto, o HTTP utiliza o padrão TCP, que é baseado em conexão, mesmo que nem sempre seja obrigatório
+                            o uso de uma conexão.
+                        </p>
+                        <p class="text-justify">
+                            Para contornar essas falhas, o protocolo HTTP/1.1 introduziu o conceito de linhas de produção (ou pipelining) — que se provou difícil de ser implementado — e conexões persistentes: as conexões TCPs feitas embaixo, podem ser parcialmente controladas usando
+                            o cabeçalho HTTP Connection. O HTTP/2.0 foi mais além, multiplexando várias mensagens através de uma única conexão, ajudando a manter a conexão mais quente, e mais eficiente.
+                        </p>
+
+                    </section>
+                    <hr>
+                    <section>
+                        <p class="h2">
+                            O que pode ser controlado pelo HTTP?
+                        </p>
+                        <br>
+                        <p class="text-justify">
+                            A natureza extensível do HTTP tem permitido mais controle e funcionalidade para a internet, ao longo do tempo. Cache e autenticação são funcionalidades suportadas desde o início da história do HTTP. A habilidade de relaxar as restrições na origem, em
+                            contraste, foi adicionada nos anos 2010s.
+                        </p>
+                        <p>
+                            Aqui está uma lista de funcionalidades comuns, controláveis com HTTP:
+                        </p>
+                        <div>
+                            <ul>
+                                <li>
+                                    Cache:
+                                    <p>
+                                        A forma como documentos são cacheados pode ser controlada pelo HTTP. O servidor pode instruir proxies, e clientes, ao que cachear e por quanto tempo. O cliente pode instruir proxies de cache intermediários a ignorar o documento armazenado.
+                                    </p>
+                                </li>
+                                <li>
+                                    Relaxamento das restrições na origem:
+                                    <p>
+                                        Para prevenir bisbilhoteiros e outros invasores de privacidade, os navegadores reforçam estritamente a separação dos sites Web. Somente páginas de
+                                        <strong>mesma origem </strong> podem acessar todas as informações de uma página Web. Apesar dessa restrição ser um fardo grande aos servidores, os cabeçalhos HTTP podem relaxar essa separação estrita no lado dos
+                                        servidores, permitindo que um documento ser composto por várias fontes de informação em outros domínios (e pode até ter razões específicas de segurança para se fazer isso), como um tecido de retalhos.
+                                    </p>
+                                </li>
+                                <li>
+                                    Autenticação:
+                                    <p>
+                                        Algumas páginas podem ser protegidas para que apenas usuários específicos possam acessá-la. Autenticação básica pode ser provida pelo HTTP, usando tanto o cabeçalho <strong>WWW-Authenticate</strong> e similares,
+                                        quanto configurando uma sessão específica usando cookies HTTP.
+                                    </p>
+                                </li>
+                                <li>
+                                    Proxy e tunelamento:
+                                    <p>
+                                        Servidores e/ou clientes estão frequentemente localizados em intranets e escondem seu verdadeiro endereço IP aos outros. Requisições HTTP recorrem aos proxies para contornar essa barreira na rede. Mas nem todos os proxies são proxies HTTP. O protocolo
+                                        SOCKS, por exemplo, opera em um nível mais baixo. Outros protocolos, como ftp, podem ser tratados por esses proxies.
+                                    </p>
+                                </li>
+                                <li>
+                                    Sessões
+                                    <p>
+                                        Usando os cookies HTTP, permite que você crie vincule às requisições o estado do servidor. Isso cria as sessões, apesar do protocolo HTTP básico não manter estado. Isso é útil não só para os carrinhos de compras de e-commerces, mas também para qualquer
+                                        site que permita customização das respostas a nível de usuário.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <p>
+
+                        </p>
+                        <p>
+
+                        </p>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
