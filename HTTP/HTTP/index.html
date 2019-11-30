@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Entenda o que é HTTP</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+    <header>
+        <nav id="main-nav" class="navbar navbar-expand-lg navbar-light ">
+            <a class="h1 text-bold logo" target="_self">HTTP</a>
+            <div id="dashboard-main-navbar" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html" target="_self">Início</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="aspectoshttp.html" target="_self">Aspectos básicos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fluxohttp.html" target="_self">Fluxo HTTP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apishttp.html" target="_self">APIs HTTP</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="titlebar-container">
+            <div class="titlebar">
+                <h1 class="title">Uma visão geral do HTTP</h1>
+            </div>
+        </div>
+        <main>
+            <br>
+            <br>
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <section>
+                            <p class="h3">
+                                O que é HTTP?
+                            </p>
+                            <br>
+                            <p class="text-justify">
+                                HTTP é um protocolo (protocol) que permite a obtenção de recursos, tais como documentos HTML. É a base de qualquer troca de dados na Web e um protocolo cliente-servidor, o que significa que as requisições são iniciadas pelo destinatário, geralmente um
+                                navegador da Web. Um documento completo é reconstruído a partir dos diferentes sub-documentos obtidos, como por exemplo texto, descrição do layout, imagens, vídeos, scripts e muito mais.
+                            </p>
+                            <img class="img-http" src="https://mdn.mozillademos.org/files/13677/Fetching_a_page.png">
+                        </section>
+                        <hr>
+                        <section>
+                            <p class="h2">
+                                Componentes de sistemas baseados em HTTP
+                            </p>
+                            <br>
+                            <p class="text-justify">
+                                O HTTP é um protocolo cliente-servidor: as requisições são enviados por uma entidade, o agente-usuário (ou um proxy em nome dele). Cada requisição individual é enviada para um servidor, que irá lidar com isso e fornecer um resultado, chamado de resposta.
+                                Entre a solicitação e a resposta existem várias entidades, designadas coletivamente como proxies, que executam operações diferentes e atuam como gateways (intermediários) ou caches, por exemplo.
+                            </p>
+                            <p>
+                                Graças ao modelo de camadas da Web (layers), essas funcionalidades estão escondidas nas camadas de rede e transporte, respectivamente. O HTTP está no topo da camada de aplicação. Apesar de ser importante diagnosticar problemas de conectividade, os layers
+                                abaixo da camada de aplicação são irrelevantes para a descrição do HTTP.
+                            </p>
+                            <div>
+                                <img class="img-fluid" alt="Client server chain" src="https://mdn.mozillademos.org/files/13679/Client-server-chain.png">
+                            </div>
+                            <p>
+                                Para mostrar uma página Web, o navegador envia uma requisição para buscar o documento HTML da página. Ele então realiza uma análise sintática desse arquivo, buscando requisições adicionais correspondentes a scripts de execução, informações de layout (CSS)
+                                para apresentação e subrecursos contidos na página (geralmente imagens e vídeos). Depois o navegador interpreta esses recursos para mostrar ao usuário o documento completo, a página Web. Scripts executados pelo navegador
+                                podem buscar mais recursos em fases subsequentes e o navegador atualiza a página Web de acordo.
+                            </p>
+                            <p>
+                                Uma página Web é um documento de hipertexto. Isso significa que algumas partes do texto mostrado são links (vínculos com outras páginas ou recursos da Web), os quais podem ser ativados (normalmente pelo clique do mouse) para buscar uma nova página, permitindo
+                                ao usuário redirecionar seu agente-usuário e navegar pela internet. O navegador traduz esses endereços em requisições HTTP e depois interpreta as respostas HTTP para mostrar ao usuário uma resposta transparente.
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+        </footer>
+</body>
+
+</html>
