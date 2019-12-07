@@ -1,3 +1,3 @@
 <?php
-header('Location:index.html');
+include('Location:index.html');
 ?>
